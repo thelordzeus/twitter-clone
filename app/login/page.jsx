@@ -1,7 +1,15 @@
-export default function LoginPage() {
+import { getProviders } from "next-auth/react";
+export default function LoginPage({ providers }) {
   return (
-    <>
-      <h1>Login page </h1>
-    </>
+    <div className="flex items-center justify-center h-screen ">
+      login page here
+    </div>
   );
+}
+
+export async function getServerSideProps() {
+  const providers = await getProviders();
+  return {
+    props: { providers },
+  };
 }
