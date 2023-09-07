@@ -1,10 +1,12 @@
 "use client";
 import { getProviders, signIn, useSession } from "next-auth/react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
 export default async function LoginPage({}) {
   const providers = await getProviders();
 
-  const { data, status } = useSession();
-  console.log(data, status);
+  const session = await getServerSession(authOptions);
+  console.log(session);
 
   return (
     <div className="flex items-center justify-center h-screen ">
